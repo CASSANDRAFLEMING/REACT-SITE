@@ -10,6 +10,13 @@ function App() {
         {<Header />}
         <main>
           {<List />}
+          <div id="userInput">
+              <form id="newItemForm">
+                  <label for="item">new todo</label>
+                  <input type="text" name="item" id="item" />
+              </form>
+              <button id="submitItem" />
+          </div>
         </main>
     </div>
   );

@@ -11,7 +11,6 @@ function App() {
         <main>
           {<List />}
           <div id="userInput">
-              <p>"new item"</p>
               <form id="newItemForm">
                   <label for="item">new todo</label>
                   <input type="text" name="item" id="item" />

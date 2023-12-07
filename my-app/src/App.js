@@ -10,11 +10,14 @@ function App() {
         {<Header />}
         <main>
           {<List />}
+            <br />
+            <br />
           <div id="userInput">
               <form id="newItemForm">
                   <label for="item">new todo</label>
                   <input type="text" name="item" id="item" />
               </form>
+              <br />
               <button id="submitItem" value="submit"/>
           </div>
         </main>

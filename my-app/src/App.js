@@ -13,12 +13,23 @@ function App() {
     const updateItem = (e) => {
         e.preventDefault();
         const currentItem = document.getElementById('newItem')
-        const newLI = <Item itemName={currentItem.value} />;
+        const newLI = <Item itemName={currentItem.value} handleDelete={deleteMe} />;
         setList((prev) => {
                 return [...prev, newLI]
             })
         currentItem.value = '';
     }
+
+    const clearList = (e) => {
+        e.preventDefault();
+        setList([]);
+    }
+
+    const deleteMe = (e) => {
+        const id = e.target.key;
+        console.log(id);
+    }
+
 
   return (
     <div>
@@ -28,15 +39,18 @@ function App() {
             <br />
 
             <br />
-          <div id="userInput">
-              <form id="newItemForm">
-                  <label for="newItem">new todo</label>
-                  <input type="text" name="newItem" id="newItem"/>
-                  <button onClick={updateItem}>Add item</button>
-              </form>
-              <br/>
+            <div id="userInput">
+                <form id="newItemForm">
+                    <label for="newItem">new todo</label>
+                    <input type="text" name="newItem" id="newItem"/>
+                    <button onClick={updateItem}>Add item</button>
+                </form>
+                <br/>
+                <br/>
+                <button onClick={clearList}>Clear List</button>
+                <br/>
 
-          </div>
+            </div>
         </main>
     </div>
   );

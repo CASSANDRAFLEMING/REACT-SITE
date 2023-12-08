@@ -5,9 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 50px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#submitItem{
+  width: 100px;
+  content: "add item"
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 350px;
 }

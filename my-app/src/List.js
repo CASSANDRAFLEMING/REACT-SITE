@@ -2,18 +2,25 @@ import React from 'react';
 import Item from './Item';
 
 function List(props){
-    // const listLength = Math.random() * 15;
-    // const listArray = [];
-    // for (let x = 0; x < listLength; x++){
-    //     listArray.push(<Item key={x} itemName='randomItem' />);
-    // }
-    return (
-        <div id="list">
-            <ul>
-                {props.list.map(item => {return item})}
-            </ul>
-        </div>
-    )
+
+    if (props.list.length !== 0){
+        const list = props.list.map((item, index) => <li id={index} onClick={props.handleDelete}>{item}</li>);
+        return (
+            <div id="listBox">
+                <ul id={"list"}>
+                    {list}
+                </ul>
+            </div>
+        )
+    }else{
+        return <p>You have no todo items!</p>;
+    }
+
+    List.defaultProps = {
+        list: []
+    }
+
+
 };
 
 export default List;

@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
 import List from './List';
-import Button from './Button';
-import Item from './Item';
+
 
 
 function App() {
@@ -12,12 +11,28 @@ function App() {
 
     const updateItem = (e) => {
         e.preventDefault();
-        const currentItem = document.getElementById('newItem')
-        const newLI = <Item itemName={currentItem.value} handleDelete={deleteMe} />;
+        const currentItem = document.getElementById('newItem');
+        const value = currentItem.value;
         setList((prev) => {
-                return [...prev, newLI]
+                return [...prev, value]
             })
         currentItem.value = '';
+    }
+
+    const deleteMe = (e) => {
+        // const id = (e.currentTarget.id);
+        // setList((prev) => {
+        //     prev.filter((item) => { return item.id !== id});
+        // })
+        // console.log(list);
+        // const currentItem = document.getElementById('newItem');
+        // const value = currentItem.value;
+        // currentItem.value = '';
+        const targetID = e.currentTarget.id;
+        const node = document.getElementById(targetID);
+        if (node.parentNode) {
+            node.parentNode.removeChild(node)
+        }
     }
 
     const clearList = (e) => {
@@ -25,30 +40,29 @@ function App() {
         setList([]);
     }
 
-    const deleteMe = (e) => {
-        const id = e.target.key;
-        console.log(id);
-    }
+
 
 
   return (
     <div>
         {<Header />}
         <main>
-          {<List list={list}/>}
+          {<List list={list} handleDelete={deleteMe}/>}
             <br />
 
             <br />
             <div id="userInput">
                 <form id="newItemForm">
-                    <label for="newItem">new todo</label>
+                    <label htmlFor="newItem">new todo</label>
                     <input type="text" name="newItem" id="newItem"/>
-                    <button onClick={updateItem}>Add item</button>
+                    <button id="updateItem" onClick={updateItem}>Add item</button>
                 </form>
                 <br/>
                 <br/>
-                <button onClick={clearList}>Clear List</button>
+                <button id="clearItems" onClick={clearList}>Clear List</button>
                 <br/>
+                <br/>
+                <p>To remove an item, simply click on it!</p>
 
             </div>
         </main>
